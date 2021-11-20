@@ -1,6 +1,20 @@
 \chapter{A Gentle Start}
 
 \begin{ex}
+  Our goal is to show that given a training set
+  $S=\{(\x_i, f(\x_i))\}_{i=1}^m\subseteq (\R^d\times \{0, 1\})^m$,
+  there exists a polynomial $p_S$ such that $p_S(\x)\geq 0$ if and only if
+  $\x\in S$ such that $f(\x)=1$.
+
+  For every $\x_i\in S$, we construct a polynomial
+  $Q_i(\mb{t})=(t_1-x_{i,1})^2+\cdots+(t_d-x_{i,d})^2$,
+  and note that $Q_i(\mb{t})\geq 0$ with equality if and only if
+  $\mb{t}=\x_i$. Therefore
+  \begin{align*}
+    p_S(\mb{t})=-\prod_{\substack{i \in [d] \\ f(\x_i) = 1}}Q_i(\mb{t})
+  \end{align*}
+  has a zero whenever $\mb{t}=\x_i$ for an $i$ such that $f(\x_i)=1$, and is
+  negative otherwise.
 \end{ex}
 
 \begin{ex}
