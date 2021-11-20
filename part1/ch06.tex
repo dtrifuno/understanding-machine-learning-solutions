@@ -1,6 +1,10 @@
 \chapter{The VC-Dimension}
 
 \begin{ex}
+  Suppose not, i.e.\ suppose that $\H'\subseteq \H$, but $\VCdim(\H')>\VCdim(H)=n$. Then
+  there exists some set $C\subseteq \X$, with $|C|=n+1$ that $\H'$ shatters.
+  However, since $\H'\subseteq \H$, it follows that $\H'_C\subseteq \H_C$ and
+  therefore $\H$ also shatters $C$, contradicting the assumption that $\VCdim(\H)=n$.
 \end{ex}
 
 \begin{ex}
