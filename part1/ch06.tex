@@ -57,13 +57,13 @@
 \begin{ex}
   Note that there is a one-to-one correspondence between hypotheses in $\H_{n-\text{parity}}$
   and subsets of $[n]$, by mapping each hypothesis $h_I$ to $I\subseteq [n]$.
-  Hence $|\H_{n-\text{parity}}|=2^n$, and it follows
+  Hence, $|\H_{n-\text{parity}}|=2^n$, and it follows
   by the VC-dimension bound on finite classes that $\VCdim(\H_{n-\text{parity}})\leq n$.
 
   To show that the VC-dimension is $n$, it remains to show that the hypothesis class
   can shatter a set of cardinality $n$. Let $C=\{e_i\}_{i=1}^n$,
   the set of unit vectors, and note that for any $v\in \{0, 1\}^n$, if we define
-  $I=\{i\in [n]\mid v_i = 1 \}$, the hypothesis $h_I$ maps $e_i$ to $v_i$. Hence
+  $I=\{i\in [n]\mid v_i = 1 \}$, the hypothesis $h_I$ maps $e_i$ to $v_i$. Hence,
   $\H_{n-\text{parity}}$ shatters $C$.
 \end{ex}
 
@@ -106,10 +106,10 @@
           and let $\H=\{\ell_r \mid r\in [0, 1] \}$. Then $\H$ shatters $\{0.5\}$, since $\ell_1(0.5)=0$ and $\ell_0(0.5)=1$,
           but $\H$ cannot shatter a set of two points, since
           given $\{p_1, p_2\}$ with $p_1 < p_2$, there is no $\ell_r$ such that $\ell_r(p_1) = 1$, but $\ell_r(p_2)=0$.
-          Thus $\VCdim(\H)=1$ despite the fact that $\H$ is infite.
+          Thus, $\VCdim(\H)=1$ despite the fact that $\H$ is infinite.
     \item Let $\H$ consist of the constant $0$ and the constant $1$ functions, and note that it
           shatters a singleton set, but cannot shatter a set of two points, since it cannot map the two
-          points to different values. Hence $\VCdim(\H)=1=\log_2(|\H|)$.
+          points to different values. Hence, $\VCdim(\H)=1=\log_2(|\H|)$.
   \end{enumerate}
 \end{ex}
 
