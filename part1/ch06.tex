@@ -1,10 +1,11 @@
 \chapter{The VC-Dimension}
 
 \begin{ex}
-  Suppose not, i.e.\ suppose that $\H'\subseteq \H$, but $\VCdim(\H')>\VCdim(H)=n$. Then
-  there exists some set $C\subseteq \X$, with $|C|=n+1$ that $\H'$ shatters.
-  However, since $\H'\subseteq \H$, it follows that $\H'_C\subseteq \H_C$ and
-  therefore $\H$ also shatters $C$, contradicting the assumption that $\VCdim(\H)=n$.
+  Suppose not, i.e.\ suppose that $\H'\subseteq \H$, but
+  $\VCdim(\H')>\VCdim(H)=n$. Then there exists some set $C\subseteq \X$, with
+  $|C|=n+1$ that $\H'$ shatters. However, since $\H'\subseteq \H$, it follows
+  that $\H'_C\subseteq \H_C$ and therefore $\H$ also shatters $C$,
+  contradicting the assumption that $\VCdim(\H)=n$.
 \end{ex}
 
 \begin{ex}
@@ -13,24 +14,26 @@
     \item Let $n$ be the cardinality of the domain set $\X$. Then, the
           VC-dimension of $\H^\X_{=k}$ is $\min(k, n-k)$.
 
-          First, note that it is never possible to shatter a set of $k+1$ points, since there is no
-          $h\in\H^\X_{=k}$ such that $h(x)=1$ for $k+1$ different points. Likewise,
-          it is never possible to shatter a set of $n-k+1$ points, since if a
-          hypothesis assigns the value $1$ to exactly $k$ elements, it must assign
-          the value $0$ to exactly $n-k$ elements, and hence there is no hypothesis
-          corresponding to the constant $0$ function.
+          First, note that it is never possible to shatter a set of $k+1$
+          points, since there is no $h\in\H^\X_{=k}$ such that $h(x)=1$ for
+          $k+1$ different points. Likewise, it is never possible to shatter a
+          set of $n-k+1$ points, since if a hypothesis assigns the value $1$ to
+          exactly $k$ elements, it must assign the value $0$ to exactly $n-k$
+          elements, and hence there is no hypothesis corresponding to the
+          constant $0$ function.
 
-          Next, suppose that $k\leq n-k$. Let $C=\{p_i\}_{i=1}^k$ be a subset of $\X$,
-          and note that for any $v\in\{0,1\}^k$, we can construct a hypothesis $h(p_i)=v_i$, since we
-          know that at most $k$ of the $v_i$'s are going to be $1$, and that there are
-          at least $k$ more elements in $X\setminus C$ that we can map to $1$ in order to
-          satisfy the condition on the hypothesis space.
+          Next, suppose that $k\leq n-k$. Let $C=\{p_i\}_{i=1}^k$ be a subset of
+          $\X$, and note that for any $v\in\{0,1\}^k$, we can construct a
+          hypothesis $h(p_i)=v_i$, since we know that at most $k$ of the $v_i$'s
+          are going to be $1$, and that there are at least $k$ more elements in
+          $X\setminus C$ that we can map to $1$ in order to satisfy the
+          condition on the hypothesis space.
 
-          Finally, suppose that $n-k\leq k$. Let $D=\{p_i\}_{i=1}^{n-k}$ be a subset of $\X$,
-          and note that any function $h:D\to \{0,1\}^{n-k}$ is in $H^\X_{=k}$, since
-          $|D|=n-k\leq k$, and hence $h$ can assign the value $1$ enough times and
-          $|\X\setminus D|=n-(n-k)=k\geq n-k$, and hence $h$ can assign the value $0$
-          enough times.
+          Finally, suppose that $n-k\leq k$. Let $D=\{p_i\}_{i=1}^{n-k}$ be a
+          subset of $\X$, and note that any function $h:D\to \{0,1\}^{n-k}$ is
+          in $H^\X_{=k}$, since $|D|=n-k\leq k$, and hence $h$ can assign the
+          value $1$ enough times and $|\X\setminus D|=n-(n-k)=k\geq n-k$, and
+          hence $h$ can assign the value $0$ enough times.
     \item Let $n$ be the cardinality of the domain set $\X$. Then
           \begin{align*}
             \VCdim(\H^\X_{\text{at-most-$k$}})=\begin{cases}
@@ -39,55 +42,63 @@
             \end{cases}
           \end{align*}
 
-          First, note that if $n\leq 2k+1$, then for every $f\in \X^{\{0, 1\}}$, it is
-          either going to take on the value $1$ at most $k$ times, or the value $0$ at most
-          $k$ times, and hence is in $\H^\X_{\text{at-most-$k$}}$.
+          First, note that if $n\leq 2k+1$, then for every $f\in \X^{\{0, 1\}}$,
+          it is either going to take on the value $1$ at most $k$ times, or the
+          value $0$ at most $k$ times, and hence is in
+          $\H^\X_{\text{at-most-$k$}}$.
 
-          Next, suppose that $n>2k+1$. Note that it is never possible to shatter a set $C$ of
-          $k+1$ points, since a function that returns $1$ for the $k+1$ elements of $C$ will have
-          to return $0$ for the remaining $|\X\setminus C|>k$ elements, and thus is not of the
-          hypothesis class.
+          Next, suppose that $n>2k+1$. Note that it is never possible to shatter
+          a set $C$ of $k+1$ points, since a function that returns $1$ for the
+          $k+1$ elements of $C$ will have to return $0$ for the remaining
+          $|\X\setminus C|>k$ elements, and thus is not of the hypothesis class.
 
-          Finally, note that if $C=\{p_i\}_{i=1}^k$, we can always construct a hypothesis
-          $h(p_i)=v_i$ for any $v\in \{0,1\}^k$, by specifying that $h(x)=0$ if $x\in \X\setminus C$
-          and observing that $h$ then assigns the value $1$ at most $k$ times.
+          Finally, note that if $C=\{p_i\}_{i=1}^k$, we can always construct a
+          hypothesis $h(p_i)=v_i$ for any $v\in \{0,1\}^k$, by specifying that
+          $h(x)=0$ if $x\in \X\setminus C$ and observing that $h$ then assigns
+          the value $1$ at most $k$ times.
   \end{enumerate}
 \end{ex}
 
 \begin{ex}
-  Note that there is a one-to-one correspondence between hypotheses in $\H_{n-\text{parity}}$
-  and subsets of $[n]$, by mapping each hypothesis $h_I$ to $I\subseteq [n]$.
-  Hence, $|\H_{n-\text{parity}}|=2^n$, and it follows
-  by the VC-dimension bound on finite classes that $\VCdim(\H_{n-\text{parity}})\leq n$.
+  Note that there is a one-to-one correspondence between hypotheses in
+  $\H_{n-\text{parity}}$ and subsets of $[n]$, by mapping each hypothesis $h_I$
+  to $I\subseteq [n]$. Hence, $|\H_{n-\text{parity}}|=2^n$, and it follows by
+  the VC-dimension bound on finite classes that
+  $\VCdim(\H_{n-\text{parity}})\leq n$.
 
-  To show that the VC-dimension is $n$, it remains to show that the hypothesis class
-  can shatter a set of cardinality $n$. Let $C=\{e_i\}_{i=1}^n$,
-  the set of unit vectors, and note that for any $v\in \{0, 1\}^n$, if we define
-  $I=\{i\in [n]\mid v_i = 1 \}$, the hypothesis $h_I$ maps $e_i$ to $v_i$. Hence,
-  $\H_{n-\text{parity}}$ shatters $C$.
+  To show that the VC-dimension is $n$, it remains to show that the hypothesis
+  class can shatter a set of cardinality $n$. Let $C=\{e_i\}_{i=1}^n$, the set
+  of unit vectors, and note that for any $v\in \{0, 1\}^n$, if we define
+  $I=\{i\in [n]\mid v_i = 1 \}$, the hypothesis $h_I$ maps $e_i$ to $v_i$.
+  Hence, $\H_{n-\text{parity}}$ shatters $C$.
 \end{ex}
 
 \begin{ex}
 \end{ex}
 
 \begin{ex}
-  First, we produce a set $C=\{p_m\}_{m=1}^{2d}$ that $\H_{\text{rec}}^d$ shatters,
-  by defining every coordinate of $p_{2i}$ to be zero, except the $i$th coordinate
-  which we take to be $1$, and letting every coordinate of ${p_{2i+1}}$ be zero,
-  except the $i$th coordinate which we take to be $-1$. Note that hypotheses in $\H_{\text{rec}}^d$ are
-  parametrized by vectors $(t_{1,\text{low}}, t_{1,\text{high}},\ldots,t_{d,\text{low}},t_{d,\text{high}})$
-  with $t_{i,\text{low}}<t_{i,\text{high}}$ for all $i$, where $t_{i,\text{low}}$ and $t_{i,\text{high}}$ denote,
-  respectively, the lowest and highest value of the $i$th coordinate of the rectangle.
-  Then, given any $v\in\{0, 1\}^{2d}$, we can construct the axis-aligned rectangle corresponding
-  to the vector given by $t_{i,\text{low}}=-v_{2i+1}-\frac{1}{2}$ and $t_{i,\text{high}}=v_{2i}+\frac{1}{2}$
-  and note that it produces the desired labelling.
+  First, we produce a set $C=\{p_m\}_{m=1}^{2d}$ that $\H_{\text{rec}}^d$
+  shatters, by defining every coordinate of $p_{2i}$ to be zero, except the
+  $i$th coordinate which we take to be $1$, and letting every coordinate of
+  ${p_{2i+1}}$ be zero, except the $i$th coordinate which we take to be $-1$.
+  Note that hypotheses in $\H_{\text{rec}}^d$ are parametrized by vectors
+  $(t_{1,\text{low}}, t_{1,\text{high}},\ldots,t_{d,\text{low}},t_{d,\text{high}})$
+  with $t_{i,\text{low}}<t_{i,\text{high}}$ for all $i$, where
+  $t_{i,\text{low}}$ and $t_{i,\text{high}}$ denote, respectively, the lowest
+  and highest value of the $i$th coordinate of the rectangle. Then, given any
+  $v\in\{0, 1\}^{2d}$, we can construct the axis-aligned rectangle corresponding
+  to the vector given by $t_{i,\text{low}}=-v_{2i+1}-\frac{1}{2}$ and
+  $t_{i,\text{high}}=v_{2i}+\frac{1}{2}$ and note that it produces the desired
+  labelling.
 
-  Next, consider a set $D$ of $2d+1$ points and take the minimal axis-aligned rectangle
-  that contains it. Note that we can parametrize this rectangle by taking the minimum and maximum
-  of coordinates of points in our set along each axis, but that since there are $2d$ such
-  parameters, and $2d+1$ points, by the pigeonhole principle there must exist a point $p$ that
-  we can exclude from the set, but still have the same minimum rectangle over the remaining points.
-  Hence, it is not possible for a hypothesis in $\H_{\text{rec}}^d$ to label all of $D\setminus\{p\}$ with $1$, but $p$ with $0$.
+  Next, consider a set $D$ of $2d+1$ points and take the minimal axis-aligned
+  rectangle that contains it. Note that we can parametrize this rectangle by
+  taking the minimum and maximum of coordinates of points in our set along each
+  axis, but that since there are $2d$ such parameters, and $2d+1$ points, by the
+  pigeonhole principle there must exist a point $p$ that we can exclude from the
+  set, but still have the same minimum rectangle over the remaining points.
+  Hence, it is not possible for a hypothesis in $\H_{\text{rec}}^d$ to label all
+  of $D\setminus\{p\}$ with $1$, but $p$ with $0$.
 \end{ex}
 
 \begin{ex}
@@ -103,13 +114,16 @@
               0 & \text{otherwise},
             \end{cases}
           \end{align*}
-          and let $\H=\{\ell_r \mid r\in [0, 1] \}$. Then $\H$ shatters $\{0.5\}$, since $\ell_1(0.5)=0$ and $\ell_0(0.5)=1$,
-          but $\H$ cannot shatter a set of two points, since
-          given $\{p_1, p_2\}$ with $p_1 < p_2$, there is no $\ell_r$ such that $\ell_r(p_1) = 1$, but $\ell_r(p_2)=0$.
-          Thus, $\VCdim(\H)=1$ despite the fact that $\H$ is infinite.
-    \item Let $\H$ consist of the constant $0$ and the constant $1$ functions, and note that it
-          shatters a singleton set, but cannot shatter a set of two points, since it cannot map the two
-          points to different values. Hence, $\VCdim(\H)=1=\log_2(|\H|)$.
+          and let $\H=\{\ell_r \mid r\in [0, 1] \}$. Then $\H$ shatters
+          $\{0.5\}$, since $\ell_1(0.5)=0$ and $\ell_0(0.5)=1$, but $\H$
+          cannot shatter a set of two points, since given $\{p_1, p_2\}$ with
+          $p_1 < p_2$, there is no $\ell_r$ such that $\ell_r(p_1) = 1$, but
+          $\ell_r(p_2)=0$. Thus, $\VCdim(\H)=1$ despite the fact that $\H$ is
+          infinite.
+    \item Let $\H$ consist of the constant $0$ and the constant $1$ functions,
+          and note that it shatters a singleton set, but cannot shatter a set of
+          two points, since it cannot map the two points to different values.
+          Hence, $\VCdim(\H)=1=\log_2(|\H|)$.
   \end{enumerate}
 \end{ex}
 
