@@ -128,6 +128,15 @@
 \end{ex}
 
 \begin{ex}
+  Fix a positive integer $k$, and let $\{b_i\}_{i=1}^{2^k-1}$ be the set of all
+  length $k$ binary vectors except the zero vector. Let $C=\{p_i\}_{i=1}^k$
+  where $p_m=0.b_{1,m}b_{2,m}\cdots b_{2^k-1,m}$, i.e.\ $p_m\in(0,1)$ and its
+  binary expansion consists of the $m$th coordinates of the $b_i$'s.
+
+  Given any labelling $v$, note that there exists a $b_j=(1,1,\ldots,1)-v$ for
+  some $j\in [2^k-1]$, and that therefore
+  $\lceil(\sin(2^j\pi p_i) \rceil = 1 - p_{i,j}=v_i$. Hence, $\H$ shatters $C$,
+  but since the size of $C$ was arbitrary, it follows that $\VCdim(\H)=\infty$.
 \end{ex}
 
 \begin{ex}
