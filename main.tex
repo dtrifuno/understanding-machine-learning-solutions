@@ -1,4 +1,5 @@
 \documentclass[oneside]{memoir}
+% LTeX: enabled=false
 \usepackage[utf8]{inputenc}
 
 \usepackage{amsmath}
@@ -6,6 +7,10 @@
 \usepackage{amsthm}
 \theoremstyle{definition}
 \newtheorem{ex}{}[chapter]
+
+\usepackage{xcolor}
+\newcommand{\localtextbulletone}{\textcolor{gray}{\raisebox{.01ex}{\rule{1.5ex}{1.5ex}}}}
+\renewcommand{\labelitemi}{\localtextbulletone}
 
 \usepackage{float}
 \usepackage{graphicx}
@@ -21,6 +26,7 @@
       ``Understanding Machine Learning''}
 \author{Solutions by Darko Trifunovski}
 \date{November 17, 2021}
+% LTeX: enabled=true
 
 \begin{document}
 

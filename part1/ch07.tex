@@ -20,6 +20,39 @@
 \end{ex}
 
 \begin{ex}
+  \begin{itemize}
+    \item[]
+    \item Let
+          \[
+            w(h)=\frac{6}{n(h)^2\pi^2|\H_{n(h)}|},
+          \]
+          and note that we can partition $\H$ as
+          $\bigsqcup_{i=1}^\infty \H'_i$
+          where $\H'_i=\{h\in \H_i \mid n(h) = i\}$. Then
+          \begin{align*}
+            \sum_{h\in\H} w(h)
+            = \sum_{i=1}^\infty\sum_{h\in \H'_i} w(h)
+            \leq \sum_{i=1}^\infty |\H_i| \frac{6}{i^2 \pi^2 |\H_i|}
+            =\frac{6}{\pi^2}\sum_{i=1}^\infty \frac{1}{i^2} = 1.
+          \end{align*}
+    \item Fix an enumeration of the hypothesis classes
+          $\H=\bigcup_{n=1}^\infty\H_n$ and an enumeration of each
+          $\H_n'=\H_n\setminus \bigcup_{i=1}^{n-1}\H_i$ so that $h_{n,i}$ is the
+          $i$th element of $\H_n'$. Then let
+          \[
+            w(h_{n,i})=\frac{6}{n^2\pi^2}\frac{6}{i^2\pi^2},
+          \]
+          and note that
+          \begin{align*}
+            \sum_{h\in\H} w(h)
+            = \sum_{n=1}^\infty\sum_{h_{n,j}\in \H'_n} w(h_{n,j})
+            \leq \sum_{n=1}^\infty\sum_{i=1}^\infty
+            \frac{6}{n^2 \pi^2} \frac{6}{i^2 \pi^2}
+            =\sum_{n=1}^\infty \frac{6}{n^2 \pi^2}
+            \sum_{i=1}^\infty \frac{6}{i^2 \pi^2}
+            =1.
+          \end{align*}
+  \end{itemize}
 \end{ex}
 
 \begin{ex}
