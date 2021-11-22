@@ -4,6 +4,19 @@
 \end{ex}
 
 \begin{ex}
+  Let $k$ be the index of the first hypothesis $h_k$ with nonzero weight. Let
+  $N=\lceil \frac{1}{w(h_k)} \rceil +1$ and note that then
+  \begin{align*}
+    \sum_{h\in\H} w(h)
+     & =\sum_{i=1}^\infty w(h_i)                                                                             \\
+     & =\sum_{i=1}^{k-1} w(h_i) +\sum_{i=k}^{N+k} w(h_i)
+    +\sum_{i=N+k+1}^\infty w(h_i)                                                                            \\
+     & > \sum_{i=k}^{N+k} w(h_i)                         &  & \text{(first sum is zero, second is positive)} \\
+     & \geq N w(h_k)                                     &  & \text{(by monotonicity of weights)}            \\
+     & \geq 1 + w(h_k)
+  \end{align*}
+  showing that the weighting function cannot satisfy the condition
+  $\sum_{h\in\H}w(h)\leq 1$.
 \end{ex}
 
 \begin{ex}
