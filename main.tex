@@ -1,6 +1,10 @@
-\documentclass[oneside]{memoir}
+\documentclass[oneside, 12pt]{memoir}
 % LTeX: enabled=false
+\usepackage{xcolor}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{blindtext}
+\usepackage{tgpagella}
 
 \usepackage{amsmath}
 
@@ -8,7 +12,6 @@
 \theoremstyle{definition}
 \newtheorem{ex}{}[chapter]
 
-\usepackage{xcolor}
 \newcommand{\localtextbulletone}{\textcolor{gray}{\raisebox{.01ex}{\rule{1.5ex}{1.5ex}}}}
 \renewcommand{\labelitemi}{\localtextbulletone}
 
@@ -22,8 +25,9 @@
 \setulmarginsandblock{2.5cm}{2.5cm}{*}
 \checkandfixthelayout
 
-\title{Unofficial Solution Guide to Shai Shalev-Shwartz and Shai Ben-David's\\
-      ``Understanding Machine Learning''}
+\title{Unofficial Solution Guide to \\
+       Shai Shalev-Shwartz and Shai Ben-David's\\
+       ``Understanding Machine Learning''}
 \author{Solutions by Darko Trifunovski}
 \date{November 17, 2021}
 % LTeX: enabled=true
