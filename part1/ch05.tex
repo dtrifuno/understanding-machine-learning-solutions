@@ -1,6 +1,19 @@
 \chapter{The Bias-Complexity Trade-off}
 
 \begin{ex}
+  Let $\theta$ be a random variable that receives values in $[0, 1]$ and whose
+  expectation satisfies $\E[\theta] \geq 1/4$. Then, by Lemma B.1
+  (reverse Markov inequality),
+  \begin{align*}
+    \P\left[\theta > \frac{1}{8}\right]
+    = \P\left[\theta > 1-\frac{7}{8}\right]
+    \geq \frac{\E[\theta]-(1-\frac{7}{8})}{\frac{7}{8}}
+    \geq \frac{\frac{1}{4}-\frac{1}{8}}{\frac{7}{8}}
+    =\frac{1}{7}.
+  \end{align*}
+
+  The result follows by noting that $L_\D(A(S))$ is a random variable that
+  satisfies the given hypothesis.
 \end{ex}
 
 \begin{ex}
