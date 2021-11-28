@@ -23,7 +23,7 @@
           constant $0$ function.
 
           Next, suppose that $k\leq n-k$. Let $C=\{p_i\}_{i=1}^k$ be a subset of
-          $\X$, and note that for any $v\in\{0,1\}^k$, we can construct a
+          $\X$, and note that for any $\vec{v}\in\{0,1\}^k$, we can construct a
           hypothesis $h(p_i)=v_i$, since we know that at most $k$ of the $v_i$'s
           are going to be $1$, and that there are at least $k$ more elements in
           $X\setminus C$ that we can map to $1$ in order to satisfy the
@@ -53,9 +53,9 @@
           $|\X\setminus C|>k$ elements, and thus is not of the hypothesis class.
 
           Finally, note that if $C=\{p_i\}_{i=1}^k$, we can always construct a
-          hypothesis $h(p_i)=v_i$ for any $v\in \{0,1\}^k$, by specifying that
-          $h(x)=0$ if $x\in \X\setminus C$ and observing that $h$ then assigns
-          the value $1$ at most $k$ times.
+          hypothesis $h(p_i)=v_i$ for any $\vec{v}\in \{0,1\}^k$, by specifying
+          that $h(x)=0$ if $x\in \X\setminus C$ and observing that $h$ then
+          assigns the value $1$ at most $k$ times.
   \end{enumerate}
 \end{ex}
 
@@ -68,7 +68,7 @@
 
   To show that the VC-dimension is $n$, it remains to show that the hypothesis
   class can shatter a set of cardinality $n$. Let $C=\{e_i\}_{i=1}^n$, the set
-  of unit vectors, and note that for any $v\in \{0, 1\}^n$, if we define
+  of unit vectors, and note that for any $\vec{v}\in \{0, 1\}^n$, if we define
   $I=\{i\in [n]\mid v_i = 1 \}$, the hypothesis $h_I$ maps $e_i$ to $v_i$.
   Hence, $\H_{n-\text{parity}}$ shatters $C$.
 \end{ex}
@@ -86,14 +86,14 @@
   with $t_{i,\text{low}}<t_{i,\text{high}}$ for all $i$, where
   $t_{i,\text{low}}$ and $t_{i,\text{high}}$ denote, respectively, the lowest
   and highest value of the $i$th coordinate of the rectangle. Then, given any
-  $v\in\{0, 1\}^{2d}$, we can construct the axis-aligned rectangle corresponding
+  $\vec{v}\in\{0, 1\}^{2d}$, we can construct the axis-aligned rectangle corresponding
   to the vector given by $t_{i,\text{low}}=-v_{2i+1}-\frac{1}{2}$ and
   $t_{i,\text{high}}=v_{2i}+\frac{1}{2}$ and note that it produces the desired
   labelling.
 
   Next, consider a set $D$ of $2d+1$ points and take the minimal axis-aligned
   rectangle that contains it. Note that we can parametrize this rectangle by
-  taking the minimum and maximum of coordinates of points in our set along each
+  taking the minimum and maximum coordinate of all points in our set along each
   axis, but that since there are $2d$ such parameters, and $2d+1$ points, by the
   pigeonhole principle there must exist a point $p$ that we can exclude from the
   set, but still have the same minimum rectangle over the remaining points.
@@ -107,18 +107,19 @@
 \begin{ex}
   \begin{enumerate}
     \item[]
-    \item For any real number $r$, let
+    \item For any real number $a$, let
           \begin{align*}
-            \ell_r(x)=\begin{cases}
-              1 & \text{if $x \geq r$}, \\
+            h_a(x)=\begin{cases}
+              1 & \text{if $x < a$}, \\
               0 & \text{otherwise},
             \end{cases}
           \end{align*}
-          and let $\H=\{\ell_r \mid r\in [0, 1] \}$. Then $\H$ shatters
-          $\{0.5\}$, since $\ell_1(0.5)=0$ and $\ell_0(0.5)=1$, but $\H$
+          and let $\H=\{h_a \mid a\in [0, 1] \}$, the set of threshold
+          functions over the unit interval. Then $\H$ shatters
+          $\{0.5\}$, since $h_1(0.5)=1$ and $h_0(0.5)=0$, but $\H$
           cannot shatter a set of two points, since given $\{p_1, p_2\}$ with
-          $p_1 < p_2$, there is no $\ell_r$ such that $\ell_r(p_1) = 1$, but
-          $\ell_r(p_2)=0$. Thus, $\VCdim(\H)=1$ despite the fact that $\H$ is
+          $p_1 < p_2$, there is no $h_a$ such that $h_a(p_2) = 1$, but
+          $h_a(p_1)=0$. Thus, $\VCdim(\H)=1$ despite the fact that $\H$ is
           infinite.
     \item Let $\H$ consist of the constant $0$ and the constant $1$ functions,
           and note that it shatters a singleton set, but cannot shatter a set of
@@ -128,13 +129,15 @@
 \end{ex}
 
 \begin{ex}
-  Fix a positive integer $k$, and let $\{b_i\}_{i=1}^{2^k-1}$ be the set of all
-  length $k$ binary vectors except the zero vector. Let $C=\{p_i\}_{i=1}^k$
-  where $p_m=0.b_{1,m}b_{2,m}\cdots b_{2^k-1,m}$, i.e.\ $p_m\in(0,1)$ and its
-  binary expansion consists of the $m$th coordinates of the $b_i$'s.
+  Fix a positive integer $k$, and let $\{\vec{b}_i\}_{i=1}^{2^k}$ be the set
+  of all length $k$ binary vectors. In particular, we take $\vec{b}_{2^k}$ to be
+  $(1,1,\ldots,1)$. Let $C=\{p_i\}_{i=1}^k$ where
+  $p_m=0.b_{1,m}b_{2,m}\cdots b_{2^k,m}$, i.e.\ $p_m\in(0,1)$ and the
+  $i$th digit in its binary expansion consists of the $m$th coordinate of
+  $\vec{b}_i$.
 
-  Given any labelling $v$, note that there exists a $b_j=(1,1,\ldots,1)-v$ for
-  some $j\in [2^k-1]$, and that therefore
+  Given any labelling $\vec{v}$, note that there exists a
+  $\vec{b}_j=(1,1,\ldots,1)-\vec{v}$ for some $j\in [2^k]$, and that therefore
   $\lceil(\sin(2^j\pi p_i) \rceil = 1 - p_{i,j}=v_i$. Hence, $\H$ shatters $C$,
   but since the size of $C$ was arbitrary, it follows that $\VCdim(\H)=\infty$.
 \end{ex}
@@ -142,9 +145,10 @@
 \begin{ex}
   Consider a set of $3$ points, and note that $\H$ shatters it, since given a
   labelling of all ones or all minus ones, we can take the interval that
-  includes all three points with the appropriate sign, and any other labelling
-  would have only a single one or a single minus one, which we can produce from
-  an interval that contains only that point, with the appropriate sign.
+  includes all three points with the appropriate sign, and since any other
+  labelling would have only a single one or a single minus one, which we can
+  produce from an interval that contains only that point, with the appropriate
+  sign.
 
   Moreover, $\H$ cannot shatter any set of $4$ points, since given
   $\{p_1,p_2,p_3,p_4\}$, with $p_1<p_2<p_3<p_4$, we cannot produce the labelling
