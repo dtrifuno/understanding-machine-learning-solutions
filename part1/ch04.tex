@@ -4,4 +4,55 @@
 \end{ex}
 
 \begin{ex}
+  We begin by computing $m^{\text{UC}}_\H(\epsilon, \delta)$. Fix
+  $\epsilon,\delta\in (0, 1)$. We need to find an $m$ such that for any
+  $\D$, with probability of at least $1-\delta$ of the choice of
+  $S=(z_1,\ldots,z_m)$ sampled i.i.d.\ from $\D$ we have that for all $h\in\H$,
+  $|L_S(h)-L_\D(h)|\leq \epsilon$. Equivalently,
+  \[
+    \D^m(\{S \mid \exists h\in\H, |L_S(h)-L_\D(h)| > \epsilon \})< \delta.
+  \]
+
+  Recall that by writing
+  \[
+    \{S \mid \exists h\in\H, |L_S(h)-L_\D(h)| > \epsilon \}
+    =\bigcup_{h\in\H}\{S \mid |L_S(h)-L_\D(h)| > \epsilon \}
+  \]
+  and applying the union bound, we got
+  \[
+    \D^m(\{S \mid \exists h\in\H, |L_S(h)-L_\D(h)| > \epsilon \})
+    \leq \sum_{h\in\H}\D^m(\{S \mid |L_S(h)-L_\D(h)| > \epsilon \}).
+  \]
+
+  Furthermore, recall that $L_\D(h)=\E_{z\sim \D}[\ell(h,z)]$ and
+  $L_S(h)=\frac{1}{m}\sum_{i=1}^m \ell(h,z_i)$, where $\ell(h, z_i)$ is the loss
+  of the hypothesis $h$ at the point $z_i$.
+  Let $\theta_i$ be the random variable $\ell(h, z_i)$, and note that since the
+  $z_i$'s are i.i.d., so are the $\theta_i$'s. Since the range of the loss
+  function is $[a, b]$, it follows that $\theta_i\in [a, b]$. Therefore, by
+  using Hoeffding's Inequality,
+  \[
+    \P\left[\left|\frac{1}{m}\sum_{i=1}^m \theta_i-\mu\right|>\epsilon\right]
+    \leq 2\exp\left(-2m\epsilon^2/(b-a)^2 \right),
+  \]
+  where $\mu=\E[\theta_i]=L_\D(h)$.
+
+  Hence, it suffices to pick an $m$ such that
+  \[
+    \sum_{h\in\H}\D^m(\{S \mid |L_S(h)-L_\D(h)| > \epsilon \})
+    \leq 2|\H|\exp\left(-2m\epsilon^2/(b-a)^2 \right)\leq \delta,
+  \]
+  or, solving for $m$,
+  \[
+    m \geq \frac{\log(2|\H|/\delta)(b-a)^2}{2\epsilon^2}.
+  \]
+
+  Therefore, combining our result with Corollary 4.4,
+  \[
+    m_\H(\epsilon, \delta)
+    \leq m^{\text{UC}}_\H(\epsilon/2, \delta)
+    \leq \left\lceil
+    \frac{2\log(2|\H|/\delta)(b-a)^2}{\epsilon^2}
+    \right\rceil.
+  \]
 \end{ex}
