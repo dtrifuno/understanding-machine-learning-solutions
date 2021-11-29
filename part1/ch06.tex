@@ -166,4 +166,193 @@
 \end{ex}
 
 \begin{ex}
+  \begin{enumerate}
+    \item[]
+    \item Suppose $POS(\F+g)$ can shatter a set of $k$ points,
+          $\{p_i\}_{i=1}^k$. Then given a labeling $\vec{v}$, there exists an
+          $f^+\in \F$, such that $f^+(p_i)+g(p_i)>0$ if and only if $v_i=1$,
+          and an $f^-\in \F$ such that $f^-(p_i)+g(p_i)\leq 0$ if and only
+          $v_i=1$. Therefore,
+          $f^+(p_i)+g(p_i)-(f^-(p_i)+g(p_i))=f^+(p_i)-f^-(p_i)>0$
+          if and only if $v_i=1$. However, $f^+-f^-\in \F$, and therefore
+          $\VCdim{(POS(\F))}\geq \VCdim(POS(\F+g))$.
+
+          Suppose $POS(\F)$ can shatter a set of $k$ points, $\{p_i\}_{i=1}^k$.
+          Consider a labelling $\vec{v}$, and suppose we are given an $f\in \F$
+          such that $f(p_i)>0$ if and only if $v_i=1$. Moreover, suppose that
+          $f(p_i)\neq 0$ for any $p_i$. Let
+          \[
+            M=\min_{i\in [k]} |f(p_i)|,\quad K=\max_{i\in [k]} |g(p_i)|
+          \]
+          and note that $|\frac{K+1}{M}f(p_i)|>|g(p_i)|$ for all $p_i$,
+          and hence that
+          \[
+            \frac{K+1}{M}f(p_i)+g(p_i) > 0
+          \]
+          if and only if $v_i=1$. Hence, $POS(\F+g)$ also shatters
+          $\{p_i\}_{i=1}^k$, and we have
+          $\VCdim(POS(\F+g))\geq \VCdim{(POS(\F))}$.
+
+          It only remains to show that we can assume that $f(p_i)\neq 0$
+          without loss of generality. Consider the labelling $1-\vec{v}$ and let
+          $f^-\in \F$ such that $f^-(p_i)=1-v_i$. Then, let $g$ equal $f-f^-$,
+          and note that $g\in \F$, with $g(p_i)>0$ if and only if $v_i=1$,
+          but such that $g(p_i)\neq 0$.
+    \item Suppose $\dim(\mathcal{F})=d$ and let $C\subseteq \R^{n}$
+          with $|C|=d+1$. Define the map $A:\mathcal{F}\to\R^{d+1}$ by
+          $f\mapsto (f(x_1),\ldots,f(x_{d+1}))$, and note that it is a linear
+          map. Moreover, this map gives us a natural way to identify $\R^{d+1}$
+          with the space of real-valued functions on $C$. Since the
+          dimension of $\mathcal{F}$ is $d$, the map $A$ cannot be onto and
+          thus there must exist a $\vec{b}\neq 0$ that is orthogonal to
+          $\Im(A)$. Viewing $\vec{b}$ as a function on $C$ induces a labeling
+          $\vec{v}$ such that $v_i=1$ if and only if $b_i>0$. Suppose that
+          there exists a $g\in\mathcal{\F}$ that corresponds to the same
+          labeling and note that then $\la A(g), v \ra > 0$, a contradiction.
+          Hence, $\mathcal{F}$ cannot shatter a set of size $d+1$ and
+          $\VCdim(\mathcal{F}) \leq d$.
+
+          Conversely, fix a basis $\{f_1,\ldots,f_d\}$ of $\mathcal{F}$ and let
+          $g:\R^n \to \R^d$ be given by $\x\mapsto (f_1(\x),\ldots,f_d(\x))$.
+          Note that we can pick a set $S=\{\x_1,\ldots \x_d\}$ such
+          that $g(S)$ is linearly independent, by first choosing a $\x_1$ such
+          that $f_1(\x_1)\neq 0$, then a $\x_2$ such that
+          $\{(f_1(\x_1), f_2(\x_1)), (f_1(\x_2), f_2(\x_2))\}$ is independent,
+          and so on, noting that if at some step no such $\x_i$ exists, we have
+          a contradiction to the fact that the $\{f_1, \ldots,f_d\}$ are
+          linearly independent. Therefore, the restriction of $\mathcal{F}$
+          to $S$ is of full dimension, and hence $POS(\mathcal{F})$ shatters
+          $S$.
+    \item
+    \item[]
+          \begin{enumerate}[1.]
+            \item Let $L_n=\{h_{\vec{w},b} \mid \vec{w}\in\R^n, b\in \R\}$
+                  where
+                  $h_{\vec{w},b}(\vec{x}) =\langle\vec{w},\vec{x}\rangle + b$
+                  and note that $L_n$ is linearly closed since
+                  \begin{align*}
+                    (h_{\vec{w}_1,b_1}+rh_{\vec{w}_2,b_2})(\x)
+                     & =\langle\vec{w}_1,\x\rangle + b_1
+                    +r\langle\vec{w}_2,\x\rangle + rb_2        \\
+                     & =\langle\vec{w}_1+r\vec{w}_2, \x\rangle
+                    + b_1 + rb_2                               \\
+                     & =h_{\vec{w}_1+r\vec{w}_2,b_1+rb_2}(\x).
+                  \end{align*}
+                  Hence, $HS_n$, the class of halfspaces over $\R^n$,
+                  is a Dudley class since $HS_n=POS(L_n)$.
+            \item Let $L^\circ_n=\{h_{\vec{w}} \mid \vec{w}\in\R^n \}$
+                  where $h_{\vec{w}}(\vec{x})=\langle\vec{w},\vec{x}\rangle$
+                  and note that $L^\circ_n$ is linearly closed since
+                  \begin{align*}
+                    (h_{\vec{w}_1}+rh_{\vec{w}_2})(\x)
+                     & =\langle\vec{w}_1,\x\rangle
+                    +r\langle\vec{w}_2,\x\rangle              \\
+                     & =\langle\vec{w}_1+r\vec{w}_2,\x\rangle \\
+                     & =h_{\vec{w}_1+r\vec{w}_2}(\x).
+                  \end{align*}
+                  Hence, $HHS_n$, the class of homogeneous halfspaces
+                  over $\R^n$, is a Dudley class since
+                  $HHS_n=POS(L^\circ_n)$.
+            \item Let $U_d=\{h_{\vec{a}, r} \mid \vec{a}\in\R^d, r\in\R\}$
+                  where $h_{\vec{a},r}(\x)=r+2\la\x,\vec{a}\ra-\|\vec{a}\|^2$.
+                  Then
+                  \begin{align*}
+                     & (h_{\vec{a}_1,r_1} + ch_{\vec{a}_2,r_2})(\x) \\
+                     & \quad =r_1+2\langle\x,\vec{a}_1\rangle
+                    -\|\vec{a}_1\|^2
+                    +cr_2+2c\langle\x,\vec{a}_2\rangle
+                    -c\|\vec{a}_2\|^2                               \\
+                     & \quad =r_1+cr_2
+                    -\|\vec{a}_1\|^2
+                    -c\|\vec{a}_2\|^2
+                    +2\la \x, \vec{a}_1 + c\vec{a}_2 \ra            \\
+                     & \quad =r_1+cr_2
+                    -\|\vec{a}_1\|^2
+                    -c\|\vec{a}_2\|^2
+                    +\|\vec{a}_1+c\vec{a}_2\|^2
+                    +2\langle\x,\vec{a}_1+c\vec{a}_2\rangle
+                    -\|\vec{a}_1+c\vec{a}_2\|^2,
+                  \end{align*}
+                  or, letting $K=
+                    r_1+cr_2
+                    -\|\vec{a}_1\|^2
+                    -c\|\vec{a}_2\|^2
+                    +\|\vec{a}_1+c\vec{a}_2\|^2
+                  $,
+                  \begin{align*}
+                    (h_{\vec{a}_1,r_1} + ch_{\vec{a}_2,r_2})(\x)
+                    =K+2\langle\x,\vec{a}_1+c\vec{a}_2\rangle
+                    -\|\vec{a}_1+c\vec{a}_2\|^2
+                    =h_{\vec{a}_1+c\vec{a}_2, K}(\x),
+                  \end{align*}
+                  showing that $U_d$ is linearly closed.
+
+                  Next, consider $POS(U_d-\|\x\|^2)$, and note that
+                  \begin{align*}
+                    r+2\la \x, \vec{a}\ra -\|\vec{a}\|^2-\|\x\|^2
+                    =r-\|\x-\vec{a}\|^2>0
+                  \end{align*}
+                  is the inequality defining an open ball of
+                  radius $\sqrt{r}$ centered at $\vec{a}$ in $\R^d$ if $r$ is
+                  positive and is not satisfied by any $\x\in\R^d$ otherwise.
+                  Hence, $B_d\subseteq POS(U_d-\|\x\|^2)$, and therefore
+                  $\VCdim(B_d)\leq d+1$.
+
+                  We will show that $B_d$ shatters a set of size $d+1$, namely
+                  $\{\vec{e}_i\}_{i=1}^{d}\cup\{\vec{0}\}$, where $\vec{e}_i$ is
+                  the $i$th standard unit vector. Given a labelling $\vec{v}$,
+                  let $S=\{\vec{e_i} \mid v_i=1\}$, and compute
+                  $\vec{e}=\sum_{\vec{e}_i\in S} \vec{e}_i$. Note that
+                  $\|\vec{0}-\vec{e}\|=|S|$, while
+                  \[
+                    \|\vec{e}_i-\vec{e}\|=\begin{cases}
+                      |S|-1 & \text{if $\vec{e}_i\in S$}, \\
+                      |S|+1 & \text{otherwise}.
+                    \end{cases}
+                  \]
+                  Let $r=|S|-1/2$ if $v_{d+1}=0$ and $r=|S|+1/2$ if $v_{d+1}=1$
+                  and note that then the open ball of radius $r$ centered at
+                  $\vec{e}$ includes $\vec{e}_i$ if and only if $v_i=1$, and
+                  includes $\vec{0}$ if and only if $v_{d+1}=1$.
+
+                  Therefore, $\VCdim(B_d)=d+1$.
+            \item Note that given two polynomials $h_p$ and $h_g$ in $n$
+                  variables and degree at most $d$, $h_p(\x)+ch_g(\x)$ is also
+                  a polynomial in $n$ variables of degree at most $d$. Hence,
+                  $P^d_n$ is linearly closed and can be represented as a Dudley
+                  class.
+                  \begin{enumerate}[1.]
+                    \item Note that there is an isomorphism between $P_1^n$ and
+                          $\R^{n+1}$, given by
+                          \[
+                            \sum_{i=0}^n a_ix^i \mapsto (a_0, a_1, \ldots, a_n).
+                          \]
+                          Hence, $\VCdim(P^1_n)=n+1$.
+                    \item Let $P_1$ be the class of all polynomial classifiers
+                          over $\R$ and note that $P_1^n\subseteq P_1$ for all
+                          $n$. Therefore, $\VCdim(P_1)\geq \VCdim(P_1^n)=n+1$,
+                          but since $n$ was arbitrary, it follows that the VC
+                          dimension is infinite.
+                    \item Note that a monomial of degree at most $d$ in $n$
+                          variables, corresponds to the number of ways to pick
+                          $d$ elements from a set of size $n$ with repetition,
+                          i.e.\ the number of ways to arrange $d$ dots and $n-1$
+                          bars, which is
+                          \[
+                            N={d+n-1 \choose d}.
+                          \]
+
+                          Fix some monomial ordering $H: [N] \to \Z_{\geq 0}^d$ and
+                          note that it induces an isomorphism between
+                          $P^d_n$ and $\R^N$ given by
+                          \[
+                            \sum_{i=1}^N a_i\x^{H(i)} \mapsto (a_1,a_2,\ldots,a_N).
+                          \]
+                          Hence,
+                          \[
+                            \VCdim\left(P^d_n\right)=N={d+n-1 \choose d}.
+                          \]
+                  \end{enumerate}
+          \end{enumerate}
+  \end{enumerate}
 \end{ex}
