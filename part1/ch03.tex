@@ -55,16 +55,42 @@
             (1-\D(\{z_0\}))^m<(1-\epsilon)^m\leq e^{-m\epsilon}.
           \]
 
-          Thus, it suffices to find an $m$ such that $e^{-m\epsilon} \leq\delta$,
-          i.e.\
+          Thus, $\H_\text{Singleton}$ is PAC learnable, and to satisfy the
+          bounds it suffices to find an $m$ such that
+          $e^{-m\epsilon}\leq\delta$, i.e.\
           \[
-            m \geq \frac{\log(1/\delta)}{\epsilon}.
+            m_{\H_\text{Singleton}}(\epsilon, \delta)
+            \geq \left\lceil\frac{\log(1/\delta)}{\epsilon}\right\rceil.
           \]
 
   \end{enumerate}
 \end{ex}
 
 \begin{ex}
+  Given a training set $S=\{(\x_i, y_i)\}$, we can let
+  \[
+    \hat{r}=\max_{\substack{(\x_i, y_i)\in S \\ y_i = 1}} |\x_i|
+  \]
+  and return $h_{\hat{r}}$ as our hypothesis.
+
+  Fix $\epsilon, \delta\in (0,1)$. Suppose that the true labelling function is
+  given by $h_R$ for some $R\in \R_+$, and consider the annulus $A_\epsilon$
+  centered at the origin, with large radius $R$ and small radius chosen such
+  that $\D(A_\epsilon)=\epsilon$. Note that then
+  \[
+    L_{(\D, h_R)}(h_{\hat{r}})\geq\D(A_\epsilon) =\epsilon
+  \]
+  if and only if $S\cap A_\epsilon=\emptyset$. However, this can only occur with
+  probability
+  \[
+    (1-\D(A_\epsilon))^m=(1-\epsilon)^m\leq e^{-m\epsilon}.
+  \]
+  Hence, $\H$ is PAC learnable, and it suffices to choose an $m$ such
+  that $e^{-m\epsilon}\leq \delta$, i.e.
+  \[
+    m_{\H}(\epsilon,\delta)
+    \geq \left\lceil\frac{\log(1/\delta)}{\epsilon}\right\rceil.
+  \]
 \end{ex}
 
 \begin{ex}
