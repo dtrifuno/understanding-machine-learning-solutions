@@ -29,6 +29,39 @@
 \end{ex}
 
 \begin{ex}
+  \begin{enumerate}
+    \item[]
+    \item Given a training set $\{(z_1, y_1), \ldots, (z_m, y_m)\}$,
+          return $h_{z_i}$ for the first $(z_i, y_i)$ such that $y_i=1$.
+          If there is no such sample, return $h^-$.
+    \item Note that if $f=h^-$, our algorithm will identify the correct
+          hypothesis and have zero error. Hence, we may assume without loss of
+          generality that $f=h_{z_0}$ for some $z_0\in\X$. In this case, our
+          algorithm will have nonzero error if and only if the training set $S$
+          does not contain $z_0$, which will occur with probability
+          \[
+            \D^m(\{S \mid z_0\not\in S\})
+            =(1-\D(\{z_0\}))^m,
+          \]
+          in which case our algorithm will erroneously
+          return $h^-$ with error
+          \[
+            L_{(\D, f)}(h^-)=\D(\{z \mid h^-(z) \neq f(z) \})=\D(\{z_0\}).
+          \]
+
+          Thus, assuming that $L_{(\D, f)}(h^-)>\epsilon$ implies that
+          $\D(\{z_0\})>\epsilon$, and hence
+          \[
+            (1-\D(\{z_0\}))^m<(1-\epsilon)^m\leq e^{-m\epsilon}.
+          \]
+
+          Thus, it suffices to find an $m$ such that $e^{-m\epsilon} \leq\delta$,
+          i.e.\
+          \[
+            m \geq \frac{\log(1/\delta)}{\epsilon}.
+          \]
+
+  \end{enumerate}
 \end{ex}
 
 \begin{ex}
