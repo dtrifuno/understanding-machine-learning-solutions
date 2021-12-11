@@ -33,7 +33,7 @@
     \item[]
     \item Given a training set $\{(z_1, y_1), \ldots, (z_m, y_m)\}$,
           return $h_{z_i}$ for the first $(z_i, y_i)$ such that $y_i=1$.
-          If there is no such sample, return $h^-$.
+          If there is no such example, return $h^-$.
     \item Note that if $f=h^-$, our algorithm will identify the correct
           hypothesis and have zero error. Hence, we may assume without loss of
           generality that $f=h_{z_0}$ for some $z_0\in\X$. In this case, our
@@ -94,6 +94,39 @@
 \end{ex}
 
 \begin{ex}
+  We begin by arguing that the hypothesis class is PAC learnable, by noting that
+  it is finite, since each variable can either appear as-is, appear as its
+  negation or not appear at all in a particular conjunction. Therefore,
+  accounting for the additional always negative hypothesis, it follows that
+  $|\H|=3^d+1$, and therefore, by Corollary 3.2, our hypothesis class is PAC
+  learnable with sample complexity
+  \[
+    m_\H(\epsilon,\delta)\leq
+    \left\lceil\frac{\log((3^d+1)/\delta)}{\epsilon}\right\rceil
+    =\left\lceil\frac{d\log{3}+\log(1/\delta)}{\epsilon}\right\rceil.
+  \]
+
+  Next, we will give an algorithm $A$ that implements the ERM rule for learning
+  this hypothesis class. Given a training set $S=\{(\vec{s}_i, y_i)\}_{i=1}^m$,
+  start with the candidate hypothesis
+  $\bigwedge_{i=1}^d x_i\wedge \bar{x}_i$ and then for each positively labeled
+  example $\vec{s}$, modify the candidate hypothesis by, for each $i\in[d]$,
+  removing the $x_i$ term if $s_i=0$ or the $\bar{x}_i$ term if $s_i=1$.
+  Note that this makes the new candidate hypothesis label $\vec{s}$ as
+  $1$, and that since we are only removing terms, all previously seen examples
+  that were labeled as $1$, will also be labeled $1$ by the new
+  candidate hypothesis. Moreover, it is clear that this produces the most
+  conservative hypothesis that labels all positive examples as $1$, in the sense
+  that if given another $h\in \H$ such that $h(\vec{s})=1$ for all
+  $(\vec{s},1)\in S$, it follows that if $h(\x)=0$ for some $\x\in\X$, then
+  $A(S)(\x)=0$ as well. Therefore, assuming realizability, the hypothesis $A(S)$
+  cannot mislabel any examples labeled $0$ and hence will have zero empirical
+  loss over $S$.
+
+  Since the algorithm only needs to see each of the $m$ examples once, and can
+  check and modify the candidate hypothesis independently and in constant time
+  for each of the $d$ coordinates of a particular example, it follows that the
+  runtime of this algorithm is $O(md)$.
 \end{ex}
 
 \begin{ex}
