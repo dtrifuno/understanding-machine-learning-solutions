@@ -214,7 +214,7 @@
 
           Conversely, fix a basis $\{f_1,\ldots,f_d\}$ of $\mathcal{F}$ and let
           $g:\R^n \to \R^d$ be given by $\x\mapsto (f_1(\x),\ldots,f_d(\x))$.
-          Note that we can pick a set $S=\{\x_1,\ldots \x_d\}$ such
+          Note that we can pick a set $S=\{\x_1,\ldots, \x_d\}$ such
           that $g(S)$ is linearly independent, by first choosing a $\x_1$ such
           that $f_1(\x_1)\neq 0$, then a $\x_2$ such that
           $\{(f_1(\x_1), f_2(\x_1)), (f_1(\x_2), f_2(\x_2))\}$ is independent,
@@ -322,19 +322,19 @@
                   $P^d_n$ is linearly closed and can be represented as a Dudley
                   class.
                   \begin{enumerate}[1.]
-                    \item Note that there is an isomorphism between $P_1^n$ and
-                          $\R^{n+1}$, given by
+                    \item Note that there is an isomorphism between $P_1^d$ and
+                          $\R^{d+1}$, given by
                           \[
-                            \sum_{i=0}^n a_ix^i \mapsto (a_0, a_1, \ldots, a_n).
+                            \sum_{i=0}^d a_ix^i \mapsto (a_0, a_1, \ldots, a_d).
                           \]
-                          Hence, $\VCdim(P^1_n)=n+1$.
+                          Hence, $\VCdim(P_1^d)=d+1$.
                     \item Let $P_1$ be the class of all polynomial classifiers
-                          over $\R$ and note that $P_1^n\subseteq P_1$ for all
-                          $n$. Therefore, $\VCdim(P_1)\geq \VCdim(P_1^n)=n+1$,
-                          but since $n$ was arbitrary, it follows that the VC
-                          dimension is infinite.
+                          over $\R$ and note that $P_1^d\subseteq P_1$ for all
+                          $d$. Therefore, $\VCdim(P_1)\geq \VCdim(P_1^d)=d+1$,
+                          but since $d$ was arbitrary, it follows that the VC
+                          dimension of $P_1$ is infinite.
                     \item Note that a monomial of degree at most $d$ in $n$
-                          variables, corresponds to the number of ways to pick
+                          variables corresponds to the number of ways to pick
                           $d$ elements from a set of size $n$ with repetition,
                           i.e.\ the number of ways to arrange $d$ dots and $n-1$
                           bars, which is
@@ -342,15 +342,17 @@
                             N=\binom{d+n-1}{d}.
                           \]
 
-                          Fix some monomial ordering $H: [N] \to \Z_{\geq 0}^d$ and
-                          note that it induces an isomorphism between
+                          Fix some monomial ordering $H: [N] \to \Z_{\geq 0}^d$
+                          and note that it induces an isomorphism between
                           $P^d_n$ and $\R^N$ given by
                           \[
-                            \sum_{i=1}^N a_i\x^{H(i)} \mapsto (a_1,a_2,\ldots,a_N).
+                            \sum_{i=1}^N a_i\x^{H(i)}
+                            \mapsto
+                            (a_1,a_2,\ldots,a_N).
                           \]
                           Hence,
                           \[
-                            \VCdim\left(P^d_n\right)=N={d+n-1}{d}.
+                            \VCdim\left(P^d_n\right)=N=\binom{d+n-1}{d}.
                           \]
                   \end{enumerate}
           \end{enumerate}
