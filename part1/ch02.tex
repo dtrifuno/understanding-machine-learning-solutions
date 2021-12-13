@@ -30,4 +30,83 @@
 \end{ex}
 
 \begin{ex}
+  \begin{enumerate}
+    \item[]
+    \item Suppose not, i.e. suppose that $L_S(A(S))>0$ for some training set
+          $S$. Since $A(S)$ encloses
+          all positive examples in the training set, it follows that there must
+          be an erroneously enclosed negative example, $s^-$. Under the
+          realizability assumption, there exists a hypothesis $h^*$ such that
+          $h^*(s^-)=0$, but $h^*$ of all the positive examples in the training
+          set is $1$. Hence, the intersection of the rectangle associated
+          with $h^*$ with the rectangle associated with $A(S)$ is strictly
+          smaller than $A(S)$, but encloses all positive examples, a
+          contradiction to the definition of $A$.
+    \item We proceed identically to the hint: we fix a distribution $\D$, we let
+          $R^*=R(a_1^*, b_1^*, a_2^*, b_2^*)$ be the rectangle corresponding to the
+          true labelling and let $f$ be its corresponding hypothesis. We select an
+          $a_1\geq a_1^*$ such that $R_1=R(a_1^*, a_1, a_2^*, b_2^*)$ has mass
+          (under $\D$) of $\epsilon/4$, and similarly choose $b_1, a_2, b_2$ so
+          that
+          $R_2=R(b_1, b_1^*, a_2^*, b_2^*)$,
+          $R_3=R(a_1^*, b_1^*, a_2^*, a_2*)$,
+          $R_4=R(a_1^*, b_1^*, b_2, b_2^*)$ each have probability $\epsilon/4$.
+          \begin{itemize}
+            \item []
+            \item Note that under the realizability assumption,
+                  $R^*$ is a rectangle that contains all positive
+                  examples in the training set $S$, and that therefore must
+                  contain $R(S)$, the minimal rectangle containing all positive
+                  examples. Hence, $R^*\subseteq R(S)$.
+            \item Note that $R^*=R(S)\cup R_1\cup R_2\cup R_3\cup R_4$, and that
+                  therefore
+                  \begin{align*}
+                    L_{(\D,f)}(A(S))
+                     & =\D(R^*)\setminus \D(R(S))                 \\
+                     & \leq \D(R_1) + \D(R_2) + \D(R_3) + \D(R_4) \\
+                     & =\epsilon.
+                  \end{align*}
+            \item Note that the probability that an example drawn from $\D$ is
+                  not in $R_i$ is $1-\epsilon/4$, and that therefore the probability
+                  that $S$ does not contain any examples from $R_i$ is
+                  $(1-\epsilon/4)^m$, which we can be bounded from above by
+                  $e^{-m\epsilon/4}$.
+            \item Hence, by the union bound, the probability that $S$ does not
+                  contain examples from all of $R_1$, $R_2$, $R_3$ and $R_4$ is
+                  bounded from above by $4e^{-m\epsilon/4}$,
+                  or, solving $4e^{-m\epsilon/4}\leq \delta$ for $m$,
+                  \[
+                    m\geq \frac{4\log(4/\delta)}{\epsilon},
+                  \]
+                  as expected.
+          \end{itemize}
+    \item Note that analogously to the previous section, we can define $2d$
+          rectangles in $\R^d$, $R_1,\ldots,R_{2d}$, such that
+          $\D(R_i)=\frac{\epsilon}{2d}$ and
+          \begin{align*}
+            L_{(\D,f)}(A(S))
+            =\D(R^*)\setminus \D(R(S))
+            \leq \sum_{i=1}^{2d}\D(R_i)
+            =\epsilon.
+          \end{align*}
+
+          The probability that an example drawn from $\D$ is not in $R_i$ will
+          then be $1-\frac{\epsilon}{2d}$, and hence the probability that $S$
+          does not contain any examples from $R_i$ will be bounded from above by
+          $e^{-m\epsilon/(2d)}$.
+
+          Thus, by the union bound, the probability that $S$ does not contain
+          examples from all the $R_i$'s will be bounded from above by
+          $2de^{-m\epsilon/(2d)}$, or solving
+          $2de^{-m\epsilon/(2d)}\leq \delta$ for $m$,
+          \[
+            m\geq \frac{2d\log(2d/\delta)}{\epsilon}
+            =\frac{2d\log(2d)+2d\log(1/\delta)}{\epsilon}.
+          \]
+    \item Note that running the algorithm $A$ requires us to select the minimum
+          and maximum of each of the $d$ coordinates for all the $m$ examples.
+          Hence, the running time is $O(dm)$, but we showed earlier that the
+          required number of examples is polynomial in $1/\epsilon$ and
+          $\log(1/\delta)$. Thus, the result follows.
+  \end{enumerate}
 \end{ex}
