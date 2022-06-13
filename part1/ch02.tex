@@ -21,10 +21,14 @@
   We have
   \begin{align*}
     \underset{S|_x \sim \D^m}{\E}\left[L_S(h)\right]
-     & = \underset{S|_x \sim \D^m}{\E}\left(\frac{|\{i\in[m] \mid h(x_i)\neq y_i\}|}{m}\right)     \\
-     & = \frac{1}{m}\left(\underset{S|_x \sim \D^m}{\E}|\{i\in[m] \mid h(x_i)\neq f(x_i)\}|\right) \\
-     & = \frac{1}{m}\sum_{i=1}^m\underset{x\in \D}{\E}|\{i \mid h(x)\neq f(x)\}|                   \\
-     & = \D(\{x \mid h(x)\neq f(x) \})                                                             \\
+     & = \underset{S|_x \sim \D^m}{\E}
+    \left(\frac{|\{i\in[m] \mid h(x_i)\neq y_i\}|}{m}\right) \\
+     & = \frac{1}{m}\left(
+    \underset{S|_x \sim \D^m}{\E}|\{i\in[m] \mid h(x_i)\neq f(x_i)\}|
+    \right)                                                  \\
+     & = \frac{1}{m}\sum_{i=1}^m\underset{x\in \D}{\E}
+    |\{i \mid h(x)\neq f(x)\}|                               \\
+     & = \D(\{x \mid h(x)\neq f(x) \})                       \\
      & = L_{(\D, f)}(h).
   \end{align*}
 \end{ex}
@@ -43,11 +47,11 @@
           smaller than $A(S)$, but encloses all positive examples, a
           contradiction to the definition of $A$.
     \item We proceed identically to the hint: we fix a distribution $\D$, we let
-          $R^*=R(a_1^*, b_1^*, a_2^*, b_2^*)$ be the rectangle corresponding to the
-          true labelling and let $f$ be its corresponding hypothesis. We select an
-          $a_1\geq a_1^*$ such that $R_1=R(a_1^*, a_1, a_2^*, b_2^*)$ has mass
-          (under $\D$) of $\epsilon/4$, and similarly choose $b_1, a_2, b_2$ so
-          that
+          $R^*=R(a_1^*, b_1^*, a_2^*, b_2^*)$ be the rectangle corresponding to
+          the true labelling and let $f$ be its corresponding hypothesis. We
+          select an $a_1\geq a_1^*$ such that $R_1=R(a_1^*, a_1, a_2^*, b_2^*)$
+          has mass (under $\D$) of $\epsilon/4$, and similarly choose
+          $b_1, a_2, b_2$ so that
           $R_2=R(b_1, b_1^*, a_2^*, b_2^*)$,
           $R_3=R(a_1^*, b_1^*, a_2^*, a_2*)$,
           $R_4=R(a_1^*, b_1^*, b_2, b_2^*)$ each have probability $\epsilon/4$.
@@ -67,9 +71,9 @@
                      & =\epsilon.
                   \end{align*}
             \item Note that the probability that an example drawn from $\D$ is
-                  not in $R_i$ is $1-\epsilon/4$, and that therefore the probability
-                  that $S$ does not contain any examples from $R_i$ is
-                  $(1-\epsilon/4)^m$, which we can be bounded from above by
+                  not in $R_i$ is $1-\epsilon/4$, and that therefore the
+                  probability that $S$ does not contain any examples from $R_i$
+                  is $(1-\epsilon/4)^m$, which we can be bounded from above by
                   $e^{-m\epsilon/4}$.
             \item Hence, by the union bound, the probability that $S$ does not
                   contain examples from all of $R_1$, $R_2$, $R_3$ and $R_4$ is
